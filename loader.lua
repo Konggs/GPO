@@ -50,6 +50,8 @@ end)
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Melee Stack ( Must Enable )", Default = false })
 Toggle:OnChanged(function(Value)
     _G.meleestack = Value
+    while _G.meleestack == true do
+        
     while wait(0.3) do
     local args = {
         [1] = {
@@ -271,6 +273,7 @@ Toggle:OnChanged(function(Value)
     }
     
     game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CombatRegister"):InvokeServer(unpack(args))
+end
 end
 end)
 
