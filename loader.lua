@@ -643,8 +643,9 @@ end)
         spawn(function()
             local player = game.Players.LocalPlayer
             local targetPosition = Vector3.new(7826, -2160, -17127)
-            while wait() do
+            while wait(0.8) do
                 if getgenv().level then
+                pcall(function()
                     local playerPosition = player.Character.HumanoidRootPart.Position
                     if playerPosition then
                         local distance = (playerPosition - targetPosition).magnitude
@@ -667,6 +668,7 @@ end)
                             end)
                         end
                     end
+                    end)
                 end
             end
         end)
