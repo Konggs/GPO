@@ -1302,7 +1302,7 @@ spawn(function()
                         instant(false)
                         task.wait(0.1)
                         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("KnockedOut"):FireServer("self")
-                    else
+                    elseif distance < 2000 then
                         local roger = workspace.NPCs:FindFirstChild("Roger")
                         local hawkEye = workspace.NPCs:FindFirstChild("Hawk Eye")
                         local waitPosition1 = Vector3.new(12653, 143, 2910)
@@ -1548,12 +1548,7 @@ end)
         end
     )
     
-    local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Auto Save", Default = true})
-    Toggle:OnChanged(
-        function(Value)
-            getgenv().autosave = Value
-        end
-    )
+
     
     
     
@@ -1657,50 +1652,6 @@ end)
     
     
     --functions
-    local HttpService = game:GetService("HttpService")
-    
-    function createDirectoryIfNotExists(path)
-        if not isfolder(path) then
-            makefolder(path)
-        end
-    end
-    
-    function saveConfig()
-        local path = "YuukiHub"
-        createDirectoryIfNotExists(path)
-        local playername = game.Players.LocalPlayer.Name
-        local config = {
-            boss = getgenv().boss,
-            drink = getgenv().AutoDrinks,
-            noclipandantiafk = getgenv().noclip
-        }
-        local configPath = path .. "/" .. playername .. ".json"
-        local json = HttpService:JSONEncode(config)
-        writefile(configPath, json)
-    end
-    
-    function loadConfig()
-        local path = "YuukiHub"
-        local playername = game.Players.LocalPlayer.Name
-        local configPath = path .. "/" .. playername .. ".json"
-        if isfile(configPath) then
-            local json = readfile(configPath)
-            local config = HttpService:JSONDecode(json)
-            getgenv().boss = config.boss
-            getgenv().AutoDrinks = config.drink
-            getgenv().noclip = config.noclipandantiafk
-        end
-    end
-    getgenv().AutoDrinks = getgenv().AutoDrinks or false
-    getgenv().boss = getgenv().boss or false
-    getgenv().noclip = getgenv().noclip or false
-    loadConfig()
-    spawn(function()
-        while wait() do
-            saveConfig()
-            wait(1)
-        end
-    end)
     
     function instant(et)
         for i, x in next, game.Players.LocalPlayer.Character:GetDescendants() do
