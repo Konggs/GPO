@@ -1306,14 +1306,16 @@ spawn(function()
                         local waitPosition1 = Vector3.new(12653, 143, 2910)
 
                         if not roger and not hawkEye then
+                         
                             tween(getgenv().speed, waitPosition1)
-                        else
-                            if roger then
-                                tween(getgenv().speed, Vector3.new(roger.Head.Position.X, roger.Head.Position.Y - 3, roger.Head.Position.Z))
-                            end
-                            if hawkEye then
-                                tween(getgenv().speed, Vector3.new(hawkEye.Head.Position.X, hawkEye.Head.Position.Y - 3, hawkEye.Head.Position.Z))
-                            end
+                        end
+                        if roger then
+                           
+                            tween(getgenv().speed, Vector3.new(roger.Head.Position.X, roger.Head.Position.Y - 3, roger.Head.Position.Z))
+                        end
+                        if hawkEye then
+                          
+                            tween(getgenv().speed, Vector3.new(hawkEye.Head.Position.X, hawkEye.Head.Position.Y - 3, hawkEye.Head.Position.Z))
                         end
                     end
                 end
@@ -1321,6 +1323,7 @@ spawn(function()
         end
     end
 end)
+
 
 
 
